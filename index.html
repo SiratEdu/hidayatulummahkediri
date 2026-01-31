@@ -1,113 +1,126 @@
 <!DOCTYPE html>
-<html lang="id" dir="ltr">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Hidayatul Ummah Kediri</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Salin Proposal Hidayatul Ummah</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --primary: #1a5f7a;
-            --secondary: #d4af37;
-            --accent: #2d936c;
-        }
-        
-        .islamic-pattern {
-            background-image: url("https://www.transparenttextures.com/patterns/islamic-art.png");
-            opacity: 0.03;
-        }
-        
-        .lang-content {
-            display: none;
-        }
-        
-        .lang-content.active {
-            display: block;
-        }
-        
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .logo-container {
-            background: white;
-            padding: 20px;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        /* Animasi tombol Masterplan */
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        
-        .masterplan-btn {
-            animation: pulse-gold 2s infinite;
-            cursor: pointer;
-        }
-        
-        .masterplan-btn:hover {
-            animation: none;
-            transform: scale(1.05);
-        }
-        
-        /* Modal styles */
-        .modal-overlay {
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .modal-content {
-            animation: slideUp 0.4s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100 p-6 flex flex-col items-center justify-center min-h-screen">
 
-    <!-- Language Switcher -->
-    <div class="bg-gradient-to-r from-[#1a5f7a] to-[#2d936c] text-white py-2 px-4 text-right">
-        <div class="max-w-7xl mx-auto">
-            <button class="lang-btn active bg-white/20 px-4 py-1 rounded-full mr-2 text-sm font-medium" data-lang="id">
-                🇮🇩 Bahasa Indonesia
-            </button>
-            <button class="lang-btn bg-transparent border border-white/30 px-4 py-1 rounded-full text-sm font-medium" data-lang="en">
-                🇬🇧 English
+    <div class="bg-white p-8 rounded-3xl shadow-xl max-w-lg w-full">
+        
+        <!-- Tombol Bahasa -->
+        <div class="flex justify-end mb-4">
+            <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden">
+                <button id="btnIndo" class="px-4 py-2 bg-emerald-600 text-white font-medium" onclick="switchLanguage('id')">
+                    🇮🇩 Indonesia
+                </button>
+                <button id="btnEng" class="px-4 py-2 bg-gray-200 text-gray-700 font-medium hover:bg-gray-300" onclick="switchLanguage('en')">
+                    🇬🇧 English
+                </button>
+            </div>
+        </div>
+        
+        <h1 id="title" class="text-2xl font-bold text-emerald-800 mb-4 text-center">Salin Proposal Anggaran</h1>
+        <p id="subtitle" class="text-gray-600 mb-6 text-center text-sm">Klik tombol di bawah untuk menyalin teks rincian anggaran 3 tahap (Rp 3,5 Miliar) secara otomatis.</p>
+        
+        <!-- Tombol Masterplan -->
+        <div class="mb-6">
+            <button id="masterplanBtn" onclick="toggleMasterplan()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <span id="masterplanText">Tampilkan Masterplan 3 Tahap</span>
             </button>
         </div>
+        
+        <!-- Area Masterplan (Awalnya Tersembunyi) -->
+        <div id="masterplanContent" class="hidden mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <div id="masterplanDetails" class="prose max-w-none">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Area Teks yang akan disalin (Teks Persis Seperti Kemarin) -->
+        <textarea id="proposalText" class="hidden">
+*PROPOSAL PEMBANGUNAN YAYASAN HIDAYATUL UMMAH KEDIRI*
+*Amanah - Transparan - Berizin Resmi (AHU-0003083)*
+
+Bapak/Ibu donatur yang dimuliakan Allah, berikut adalah rencana strategis pembangunan Panti Asuhan & Pesantren kami yang terbagi dalam 3 Tahap:
+
+---
+*🏗️ MASTERPLAN 3 TAHAP (Konsep Eco-Green)*
+
+*📍 TAHAP 1: PEMBEBASAN LAHAN (Target Utama)*
+Dana difokuskan untuk mengamankan aset tanah wakaf permanen.
+• Pembebasan Lahan Utama: Rp 1,1 Miliar
+• Legalitas & Notaris: Rp 50 Juta
+• Infrastruktur & Air/Listrik: Rp 250 Juta
+*Total Tahap 1: Rp 1,4 Miliar*
+
+*🏢 TAHAP 2: STRUKTUR GEDUNG*
+Pembangunan fisik gedung 2 lantai.
+• Lantai 1 (Aula & Kelas): Rp 600 Juta
+• Lantai 2 (Asrama Santri): Rp 550 Juta
+• Upah Tenaga Kerja: Rp 250 Juta
+*Total Tahap 2: Rp 1,4 Miliar*
+
+*🛋️ TAHAP 3: FINISHING & FASILITAS*
+Kelengkapan interior agar gedung siap huni.
+• Finishing & Sanitasi: Rp 300 Juta
+• Fasilitas Tidur & Belajar: Rp 350 Juta
+• Lanskap & Area Hijau: Rp 50 Juta
+*Total Tahap 3: Rp 700 Juta*
+
+*💰 TOTAL ESTIMASI PEMBANGUNAN: Rp 3.500.000.000*
+---
+
+*Mari Menabung Jariyah untuk Anak Yatim.*
+Setiap rupiah yang Bapak/Ibu berikan adalah fondasi bagi masa depan mereka.
+
+*Info Lebih Lanjut & Bukti Legalitas:*
+🌐 Website: https://siratedu.github.io/hidayatulummahkediri/
+📍 Lokasi: Kabupaten Kediri, Jawa Timur
+        </textarea>
+
+        <button onclick="copyToClipboard()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span id="copyBtnText">Klik untuk Salin Teks</span>
+        </button>
+
+        <p id="msg" class="text-emerald-600 font-semibold mt-4 text-center hidden">Teks Berhasil Disalin! Silakan Paste di WhatsApp.</p>
     </div>
 
-    <!-- Header - LOGO ASLI di tengah -->
-    <header class="relative overflow-hidden bg-gradient-to-br from-[#1a5f7a] via-[#2a7c8d] to-[#2d936c] text-white py-12 md:py-16">
-        <div class="islamic-pattern absolute inset-0"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
-            <!-- Logo Asli dengan frame putih -->
-            <div class="logo-container mb-8">
-                <img src="logo yayasan.jpg" alt="Logo Yayasan Hidayatul Ummah Kediri" 
-                     class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover">
-            </div>
+    <script>
+        // Data untuk multi-bahasa
+        const translations = {
+            id: {
+                title: "Salin Proposal Anggaran",
+                subtitle: "Klik tombol di bawah untuk menyalin teks rincian anggaran 3 tahap (Rp 3,5 Miliar) secara otomatis.",
+                masterplanBtn: "Tampilkan Masterplan 3 Tahap",
+                copyBtn: "Klik untuk Salin Teks",
+                successMsg: "Teks Berhasil Disalin! Silakan Paste di WhatsApp.",
+                masterplanDetails: `
+                    <h3 class="font-bold text-lg text-emerald-800 mb-3">🏗️ MASTERPLAN 3 TAHAP (Konsep Eco-Green)</h3>
+                    
+                    <div class="mb-4 p-3 bg-white rounded-lg border border-emerald-100">
+                        <h4 class="font-bold text-emerald-700">📍 TAHAP 1: PEMBEBASAN LAHAN (Target Utama)</h4>
+                        <p class="text-sm text-gray-600 mb-2">Dana difokuskan untuk mengamankan aset tanah wakaf permanen.</p>
+                        <ul class="text-sm ml-4 mb-2">
+                            <li>• Pembebasan Lahan Utama: <span class="font-bold">Rp 1,1 Miliar</span></li>
+                            <li>• Legalitas & Notaris: <span class="font-bold">Rp 50 Juta</span></li>
+                            <li>• Infrastruktur & Air/Listrik: <span class="font-bold">Rp 250 Juta</span></li>
+                        </ul>
+                        <p class="font-bold text-emerald-800">Total Tahap 1: Rp 1,4 Miliar</p>
+                    </div>
+                    
+                    <div class="mb-4 p-3 bg-white rounded-lg border border-emerald-100">
+                        <h4 class="font-bold text-emerald-700">🏢 TAHAP 2: STRUKTUR GEDUNG</h4>
+                        <p class="text-sm text-gray-600 mb-2">Pembangunan fisik gedung 2 lantai.</p>
+                        <ul class="text-sm            </div>
             
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Yayasan Hidayatul Ummah Kediri</h1>
             
