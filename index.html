@@ -4,270 +4,620 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yayasan Hidayatul Ummah Kediri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Custom styles untuk gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
         
-        .language-switcher {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         
-        .language-btn {
-            padding: 8px 16px;
-            margin-left: 10px;
-            border: 1px solid #2c5e3e;
-            background-color: white;
-            color: #2c5e3e;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .language-btn:hover {
-            background-color: #f0f7f2;
-        }
-        
-        .language-btn.active {
-            background-color: #2c5e3e;
-            color: white;
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #2c5e3e;
-            margin-bottom: 30px;
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background-color: #2c5e3e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        
-        .header-text {
-            text-align: left;
-        }
-        
-        h1 {
-            color: #2c5e3e;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        
-        .tagline {
-            font-style: italic;
-            color: #5a8c6d;
-            margin-bottom: 15px;
-        }
-        
-        .registration-number {
-            background-color: #f0f7f2;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border-left: 4px solid #2c5e3e;
-            font-weight: bold;
-            color: #2c5e3e;
-            margin-top: 10px;
-            display: inline-block;
-        }
-        
-        .content {
-            display: none;
-        }
-        
-        .content.active {
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             display: block;
         }
         
-        .section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border-top: 3px solid #2c5e3e;
-        }
-        
-        h2 {
-            color: #2c5e3e;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        h3 {
-            color: #5a8c6d;
-            margin-bottom: 10px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-        }
-        
-        .founder-section {
-            background-color: #f8f5e6;
-            border-top-color: #d4b762;
-        }
-        
-        .founder-name {
-            font-weight: bold;
-            color: #2c5e3e;
-            font-size: 18px;
-            margin-top: 15px;
-        }
-        
-        footer {
+        .gallery-caption {
+            padding: 10px;
+            background: white;
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
             font-size: 14px;
+            color: #333;
         }
         
-        @media (max-width: 768px) {
-            .logo-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo-placeholder {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .header-text {
-                text-align: center;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
+        /* Animasi untuk modal */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-open {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Styling untuk gambar aktif */
+        .active-img {
+            border: 3px solid #059669;
         }
     </style>
 </head>
-<body>
-    <div class="language-switcher">
-        <button class="language-btn active" id="btn-indo">Bahasa Indonesia</button>
-        <button class="language-btn" id="btn-inggris">English</button>
-    </div>
-    
-    <header>
-        <div class="logo-container">
-            <div class="logo-placeholder">YHUK</div>
-            <div class="header-text">
-                <h1>Yayasan Hidayatul Ummah Kediri</h1>
-                <p class="tagline">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen p-4">
+
+    <!-- Container Utama -->
+    <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-8">
+        
+        <!-- Header dengan Logo -->
+        <div class="bg-emerald-700 text-white p-6 text-center relative">
+            <!-- Tombol Bahasa -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button id="btnIndo" class="px-4 py-2 bg-emerald-800 text-white rounded-lg font-medium shadow hover:bg-emerald-900 transition">
+                    <i class="fas fa-flag mr-2"></i>ID
+                </button>
+                <button id="btnEng" class="px-4 py-2 bg-emerald-500 text-white rounded-lg font-medium shadow hover:bg-emerald-600 transition">
+                    <i class="fas fa-flag-usa mr-2"></i>EN
+                </button>
+            </div>
+            
+            <!-- Logo -->
+            <div class="flex justify-center mb-4">
+                <img src="logo.yayasan.jpg" alt="Logo Yayasan" class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
+            </div>
+            
+            <h1 id="title" class="text-3xl font-bold mb-2">Yayasan Hidayatul Ummah Kediri</h1>
+            <p id="subtitle" class="text-emerald-100 text-lg">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
+            <div class="mt-4 bg-emerald-800 inline-block px-4 py-2 rounded-lg">
+                <p class="font-mono text-sm">NO REGISTRASI: AHU-0003083.AH.01.04.Tahun 2023</p>
             </div>
         </div>
-        
-        <div class="registration-number">
-            NO REGISTRASI: AHL-0003083.AH.01.04.Tahun 2023
+
+        <!-- Konten Utama -->
+        <div class="p-6">
+            <!-- Tentang Yayasan -->
+            <section class="mb-8">
+                <h2 id="aboutTitle" class="text-2xl font-bold text-emerald-800 mb-4 border-b pb-2">Tentang Yayasan</h2>
+                <div class="bg-emerald-50 p-6 rounded-xl">
+                    <p id="aboutText1" class="mb-4 text-gray-700">
+                        Yayasan Hidayatul Ummah Kediri adalah lembaga resmi terdaftar di Indonesia di bawah kepemimpinan KH. Moh Siri. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.
+                    </p>
+                    <p id="aboutText2" class="mb-4 text-gray-700">
+                        Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.
+                    </p>
+                    <p id="aboutText3" class="text-gray-700">
+                        Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tombol Masterplan -->
+            <section class="mb-8">
+                <button id="masterplanBtn" class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-project-diagram text-2xl"></i>
+                    <span id="masterplanText">Tampilkan Masterplan 3 Tahap Pembangunan</span>
+                </button>
+
+                <!-- Area Masterplan (Tersembunyi Awal) -->
+                <div id="masterplanContent" class="hidden mt-6">
+                    <div class="bg-gradient-to-r from-emerald-50 to-blue-50 p-6 rounded-2xl border-2 border-emerald-200 shadow-lg">
+                        <div id="masterplanDetails">
+                            <!-- Konten akan diisi oleh JavaScript -->
+                        </div>
+                        
+                        <!-- Gambar Lahan -->
+                        <div class="mt-6">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-4 text-center">Visualisasi Lahan</h3>
+                            <div class="flex justify-center">
+                                <img src="lahan.jpg" alt="Lahan Yayasan" class="rounded-xl shadow-lg max-w-full h-auto border-4 border-white">
+                            </div>
+                            <p id="lahanCaption" class="text-center text-gray-600 mt-3 text-sm">Lahan untuk pembangunan Panti Asuhan & Pesantren</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Foto -->
+            <section class="mb-8">
+                <h2 id="galleryTitle" class="text-2xl font-bold text-emerald-800 mb-4 border-b pb-2">Galeri Kegiatan</h2>
+                <div id="galleryContainer" class="gallery-container">
+                    <!-- Gambar akan diisi oleh JavaScript -->
+                </div>
+            </section>
+
+            <!-- Donasi & Kontak -->
+            <section class="mb-8">
+                <h2 id="supportTitle" class="text-2xl font-bold text-emerald-800 mb-4 border-b pb-2">Dukungan & Donasi</h2>
+                
+                <!-- Info Bank -->
+                <div class="bg-gradient-to-r from-gray-50 to-emerald-50 p-6 rounded-2xl border border-gray-200 shadow-md mb-6">
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="bg-red-600 text-white p-4 rounded-full mr-4 shadow">
+                            <i class="fas fa-university text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">Bank BRI</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-2">Nomor Rekening</p>
+                            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-gray-300 shadow-sm">
+                                <p id="accountNumber" class="text-xl font-bold text-gray-800 tracking-wider">6254 0103 4128 532</p>
+                                <button id="copyAccountBtn" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 p-3 rounded-full transition">
+                                    <i class="fas fa-copy text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p class="text-gray-600 text-sm mb-2">Atas Nama</p>
+                            <div class="bg-white p-4 rounded-xl border border-gray-300 shadow-sm">
+                                <p class="text-xl font-bold text-gray-800">MOH SAEFULLOH</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="copyAccountBtn2" class="w-full mt-6 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3">
+                        <i class="far fa-copy text-xl"></i>
+                        <span id="copyAccountText">Salin Nomor Rekening</span>
+                    </button>
+                </div>
+                
+                <!-- Pesan Info -->
+                <p class="text-gray-600 text-center text-sm mb-8">
+                    <i class="fas fa-info-circle text-emerald-600 mr-2"></i>
+                    <span id="infoText">Klik tombol di atas untuk menyalin nomor rekening</span>
+                </p>
+
+                <!-- Lokasi -->
+                <div class="text-center">
+                    <h3 id="locationTitle" class="font-bold text-xl text-emerald-800 mb-4">Lokasi Yayasan</h3>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                        <div class="flex items-start justify-center">
+                            <i class="fas fa-map-marker-alt text-red-500 text-2xl mt-1 mr-4"></i>
+                            <p id="locationText" class="text-gray-700 text-lg text-left">
+                                Jl. Kilisuci, Desa Sendang, Kec. Banyakan,<br>
+                                Kab. Kediri, Jawa Timur
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </header>
-    
-    <!-- Konten Bahasa Indonesia -->
-    <div id="content-indo" class="content active">
-        <div class="section">
-            <h2>Tentang Yayasan</h2>
-            <p>Yayasan Hidayatul Ummah Kediri adalah lembaga resmi terdaftar di Indonesia di bawah kepemimpinan KH. Moh Siri. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.</p>
-            
-            <p>Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.</p>
-            
-            <p>Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu.</p>
-        </div>
-        
-        <div class="section founder-section">
-            <h3>Penerimaan</h3>
-            <p>Pendiri Yayasan</p>
-            <p class="founder-name">KH. Moh Siri</p>
+
+        <!-- Footer -->
+        <div class="bg-emerald-800 text-white p-6 text-center">
+            <p class="text-lg font-semibold">Yayasan Hidayatul Ummah Kediri</p>
+            <p class="text-emerald-200 text-sm mt-2">"Membangun Harapan: Proyek Pengembangan Panti Asuhan Islami & Pesantren"</p>
+            <p class="text-emerald-300 text-xs mt-4">© 2023 Yayasan Hidayatul Ummah Kediri. Semua hak dilindungi.</p>
         </div>
     </div>
-    
-    <!-- Konten Bahasa Inggris -->
-    <div id="content-inggris" class="content">
-        <div class="section">
-            <h2>About the Foundation</h2>
-            <p>Yayasan Hidayatul Ummah Kediri is an officially registered foundation in Indonesia under the leadership of KH. Moh Siri. We provide Islamic education and social welfare services to the community with professional integrity and transparency.</p>
-            
-            <p>Our vision is to create a generation of Muslims who are faithful, knowledgeable, and noble in character, and contribute positively to the surrounding community.</p>
-            
-            <p>Our foundation is active in various religious activities, children's education, and social programs to help underprivileged communities.</p>
-        </div>
-        
-        <div class="section founder-section">
-            <h3>Acceptance</h3>
-            <p>Founder of the Foundation</p>
-            <p class="founder-name">KH. Moh Siri</p>
+
+    <!-- Modal untuk gambar -->
+    <div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="modalTitle" class="text-xl font-bold text-gray-800">Galeri Yayasan</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4 flex justify-center items-center h-[70vh]">
+                <img id="modalImage" src="" alt="" class="max-h-full max-w-full object-contain">
+            </div>
+            <div class="p-4 bg-gray-50 text-center">
+                <p id="modalCaption" class="text-gray-600"></p>
+            </div>
         </div>
     </div>
-    
-    <footer>
-        <p>&copy; 2023 Yayasan Hidayatul Ummah Kediri. All rights reserved.</p>
-    </footer>
+
+    <!-- Textarea untuk menyalin proposal -->
+    <textarea id="proposalText" class="hidden">
+*PROPOSAL PEMBANGUNAN YAYASAN HIDAYATUL UMMAH KEDIRI*
+*Amanah - Transparan - Berizin Resmi (AHU-0003083)*
+
+Bapak/Ibu donatur yang dimuliakan Allah, berikut adalah rencana strategis pembangunan Panti Asuhan & Pesantren kami yang terbagi dalam 3 Tahap:
+
+---
+*🏗️ MASTERPLAN 3 TAHAP (Konsep Eco-Green)*
+
+*📍 TAHAP 1: PEMBEBASAN LAHAN (Target Utama)*
+Dana difokuskan untuk mengamankan aset tanah wakaf permanen.
+• Pembebasan Lahan Utama: Rp 1,1 Miliar
+• Legalitas & Notaris: Rp 50 Juta
+• Infrastruktur & Air/Listrik: Rp 250 Juta
+*Total Tahap 1: Rp 1,4 Miliar*
+
+*🏢 TAHAP 2: STRUKTUR GEDUNG*
+Pembangunan fisik gedung 2 lantai.
+• Lantai 1 (Aula & Kelas): Rp 600 Juta
+• Lantai 2 (Asrama Santri): Rp 550 Juta
+• Upah Tenaga Kerja: Rp 250 Juta
+*Total Tahap 2: Rp 1,4 Miliar*
+
+*🛋️ TAHAP 3: FINISHING & FASILITAS*
+Kelengkapan interior agar gedung siap huni.
+• Finishing & Sanitasi: Rp 300 Juta
+• Fasilitas Tidur & Belajar: Rp 350 Juta
+• Lanskap & Area Hijau: Rp 50 Juta
+*Total Tahap 3: Rp 700 Juta*
+
+*💰 TOTAL ESTIMASI PEMBANGUNAN: Rp 3.500.000.000*
+---
+
+*Mari Menabung Jariyah untuk Anak Yatim.*
+Setiap rupiah yang Bapak/Ibu berikan adalah fondasi bagi masa depan mereka.
+
+*Info Lebih Lanjut & Bukti Legalitas:*
+🌐 Website: https://siratedu.github.io/hidayatulummahkediri/
+📍 Lokasi: Kabupaten Kediri, Jawa Timur
+    </textarea>
 
     <script>
+        // Data untuk multi-bahasa
+        const translations = {
+            id: {
+                title: "Yayasan Hidayatul Ummah Kediri",
+                subtitle: "\"Menumbuhkan Iman, Memberdayakan Ummat\"",
+                aboutTitle: "Tentang Yayasan",
+                aboutText1: "Yayasan Hidayatul Ummah Kediri adalah lembaga resmi terdaftar di Indonesia di bawah kepemimpinan KH. Moh Siri. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.",
+                aboutText2: "Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.",
+                aboutText3: "Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu.",
+                masterplanText: "Tampilkan Masterplan 3 Tahap Pembangunan",
+                masterplanHide: "Sembunyikan Masterplan",
+                galleryTitle: "Galeri Kegiatan",
+                supportTitle: "Dukungan & Donasi",
+                copyAccountText: "Salin Nomor Rekening",
+                infoText: "Klik tombol di atas untuk menyalin nomor rekening",
+                locationTitle: "Lokasi Yayasan",
+                locationText: "Jl. Kilisuci, Desa Sendang, Kec. Banyakan, Kab. Kediri, Jawa Timur",
+                lahanCaption: "Lahan untuk pembangunan Panti Asuhan & Pesantren",
+                modalTitle: "Galeri Yayasan",
+                masterplanDetails: `
+                    <h3 class="text-2xl font-bold text-center text-emerald-800 mb-6">🏗️ MASTERPLAN 3 TAHAP (Konsep Eco-Green)</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">📍 TAHAP 1</h4>
+                            <p class="text-sm text-gray-600 mb-3">Pembebasan Lahan & Persiapan</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Pembebasan Lahan: Rp 1,1 M</li>
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Legalitas: Rp 50 Juta</li>
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Infrastruktur: Rp 250 Juta</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 1,4 Miliar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">🏢 TAHAP 2</h4>
+                            <p class="text-sm text-gray-600 mb-3">Struktur Gedung</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-building text-emerald-500 mr-2"></i> Lantai 1: Rp 600 Juta</li>
+                                <li class="flex items-center"><i class="fas fa-building text-emerald-500 mr-2"></i> Lantai 2: Rp 550 Juta</li>
+                                <li class="flex items-center"><i class="fas fa-hard-hat text-emerald-500 mr-2"></i> Tenaga Kerja: Rp 250 Juta</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 1,4 Miliar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">🛋️ TAHAP 3</h4>
+                            <p class="text-sm text-gray-600 mb-3">Finishing & Fasilitas</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-paint-roller text-emerald-500 mr-2"></i> Finishing: Rp 300 Juta</li>
+                                <li class="flex items-center"><i class="fas fa-bed text-emerald-500 mr-2"></i> Fasilitas: Rp 350 Juta</li>
+                                <li class="flex items-center"><i class="fas fa-tree text-emerald-500 mr-2"></i> Lanskap: Rp 50 Juta</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 700 Juta</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-200">
+                        <h4 class="text-center text-2xl font-bold text-yellow-800 mb-3">💰 TOTAL ESTIMASI PEMBANGUNAN</h4>
+                        <p class="text-3xl font-bold text-center text-emerald-800">Rp 3.500.000.000</p>
+                        <p class="text-center text-gray-600 mt-2">(Tiga Miliar Lima Ratus Juta Rupiah)</p>
+                    </div>
+                `
+            },
+            en: {
+                title: "Hidayatul Ummah Foundation Kediri",
+                subtitle: "\"Cultivating Faith, Empowering the Ummah\"",
+                aboutTitle: "About the Foundation",
+                aboutText1: "Hidayatul Ummah Kediri Foundation is an officially registered institution in Indonesia under the leadership of KH. Moh Siri. We provide Islamic education and social welfare services to the community with professional integrity and transparency.",
+                aboutText2: "Our vision is to create a generation of Muslims who are faithful, knowledgeable, and virtuous, and contribute positively to the surrounding community.",
+                aboutText3: "Our foundation is active in various religious activities, children's education, and social programs to help the underprivileged.",
+                masterplanText: "Show 3-Phase Masterplan",
+                masterplanHide: "Hide Masterplan",
+                galleryTitle: "Activity Gallery",
+                supportTitle: "Support & Donation",
+                copyAccountText: "Copy Account Number",
+                infoText: "Click the button above to copy account number",
+                locationTitle: "Foundation Location",
+                locationText: "Jl. Kilisuci, Sendang Village, Banyakan District, Kediri Regency, East Java",
+                lahanCaption: "Land for Orphanage & Islamic Boarding School Development",
+                modalTitle: "Foundation Gallery",
+                masterplanDetails: `
+                    <h3 class="text-2xl font-bold text-center text-emerald-800 mb-6">🏗️ 3-PHASE MASTERPLAN (Eco-Green Concept)</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">📍 PHASE 1</h4>
+                            <p class="text-sm text-gray-600 mb-3">Land Acquisition & Preparation</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Land Acquisition: Rp 1.1B</li>
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Legality: Rp 50 Million</li>
+                                <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2"></i> Infrastructure: Rp 250 Million</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 1.4 Billion</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">🏢 PHASE 2</h4>
+                            <p class="text-sm text-gray-600 mb-3">Building Structure</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-building text-emerald-500 mr-2"></i> Floor 1: Rp 600 Million</li>
+                                <li class="flex items-center"><i class="fas fa-building text-emerald-500 mr-2"></i> Floor 2: Rp 550 Million</li>
+                                <li class="flex items-center"><i class="fas fa-hard-hat text-emerald-500 mr-2"></i> Labor: Rp 250 Million</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 1.4 Billion</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-xl shadow border border-emerald-100">
+                            <h4 class="font-bold text-lg text-emerald-700 mb-3">🛋️ PHASE 3</h4>
+                            <p class="text-sm text-gray-600 mb-3">Finishing & Facilities</p>
+                            <ul class="text-sm space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-paint-roller text-emerald-500 mr-2"></i> Finishing: Rp 300 Million</li>
+                                <li class="flex items-center"><i class="fas fa-bed text-emerald-500 mr-2"></i> Facilities: Rp 350 Million</li>
+                                <li class="flex items-center"><i class="fas fa-tree text-emerald-500 mr-2"></i> Landscaping: Rp 50 Million</li>
+                            </ul>
+                            <div class="bg-emerald-100 p-3 rounded text-center">
+                                <p class="font-bold text-emerald-800">Total: Rp 700 Million</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-200">
+                        <h4 class="text-center text-2xl font-bold text-yellow-800 mb-3">💰 TOTAL CONSTRUCTION ESTIMATE</h4>
+                        <p class="text-3xl font-bold text-center text-emerald-800">Rp 3,500,000,000</p>
+                        <p class="text-center text-gray-600 mt-2">(Three Billion Five Hundred Million Rupiah)</p>
+                    </div>
+                `
+            }
+        };
+
+        // Data gambar dari repository Anda
+        const galleryImages = [
+            { src: "IMG-20210912-WA0032.jpg", caption: "Kegiatan Yayasan 2021" },
+            { src: "IMG-20230222-WA0004.jpg", caption: "Kegiatan Yayasan 2023" },
+            { src: "IMG-20251231-WA0002.jpg", caption: "Akhir Tahun 2025" },
+            { src: "IMG-20260115-WA0006.jpg", caption: "Kegiatan Januari 2026" },
+            { src: "IMG-20260127-WA0003.jpg", caption: "Kegiatan Januari 2026" },
+            { src: "IMG-20260128-WA0056.jpg", caption: "Kegiatan Terbaru" },
+            { src: "IMG_20260128_111830_JPG.jpg", caption: "Dokumentasi Kegiatan" },
+            { src: "logo.yayasan.jpg", caption: "Logo Yayasan" }
+        ];
+
+        // Variabel global
+        let currentLang = 'id';
+        let currentImageIndex = 0;
+
         // Fungsi untuk mengganti bahasa
         function switchLanguage(lang) {
-            // Sembunyikan semua konten
-            document.getElementById('content-indo').classList.remove('active');
-            document.getElementById('content-inggris').classList.remove('active');
+            currentLang = lang;
             
-            // Tampilkan konten yang sesuai
-            document.getElementById('content-' + lang).classList.add('active');
+            // Update semua teks
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('subtitle').textContent = translations[lang].subtitle;
+            document.getElementById('aboutTitle').textContent = translations[lang].aboutTitle;
+            document.getElementById('aboutText1').textContent = translations[lang].aboutText1;
+            document.getElementById('aboutText2').textContent = translations[lang].aboutText2;
+            document.getElementById('aboutText3').textContent = translations[lang].aboutText3;
+            document.getElementById('galleryTitle').textContent = translations[lang].galleryTitle;
+            document.getElementById('supportTitle').textContent = translations[lang].supportTitle;
+            document.getElementById('infoText').textContent = translations[lang].infoText;
+            document.getElementById('locationTitle').textContent = translations[lang].locationTitle;
+            document.getElementById('locationText').innerHTML = translations[lang].locationText;
+            document.getElementById('lahanCaption').textContent = translations[lang].lahanCaption;
+            document.getElementById('modalTitle').textContent = translations[lang].modalTitle;
+            document.getElementById('copyAccountText').textContent = translations[lang].copyAccountText;
             
-            // Update tombol aktif
-            document.getElementById('btn-indo').classList.remove('active');
-            document.getElementById('btn-inggris').classList.remove('active');
-            document.getElementById('btn-' + lang).classList.add('active');
+            // Update tombol masterplan
+            const masterplanBtn = document.getElementById('masterplanBtn');
+            const isOpen = !document.getElementById('masterplanContent').classList.contains('hidden');
             
-            // Ubah judul halaman
-            if (lang === 'indo') {
-                document.title = 'Yayasan Hidayatul Ummah Kediri';
+            if (isOpen) {
+                document.getElementById('masterplanText').textContent = translations[lang].masterplanHide;
             } else {
-                document.title = 'Hidayatul Ummah Kediri Foundation';
+                document.getElementById('masterplanText').textContent = translations[lang].masterplanText;
+            }
+            
+            // Update konten masterplan jika terbuka
+            if (isOpen) {
+                document.getElementById('masterplanDetails').innerHTML = translations[lang].masterplanDetails;
+            }
+            
+            // Update tombol bahasa
+            if (lang === 'id') {
+                document.getElementById('btnIndo').classList.remove('bg-emerald-500');
+                document.getElementById('btnIndo').classList.add('bg-emerald-800');
+                document.getElementById('btnEng').classList.remove('bg-emerald-800');
+                document.getElementById('btnEng').classList.add('bg-emerald-500');
+            } else {
+                document.getElementById('btnEng').classList.remove('bg-emerald-500');
+                document.getElementById('btnEng').classList.add('bg-emerald-800');
+                document.getElementById('btnIndo').classList.remove('bg-emerald-800');
+                document.getElementById('btnIndo').classList.add('bg-emerald-500');
             }
         }
-        
-        // Tambahkan event listener untuk tombol bahasa
-        document.getElementById('btn-indo').addEventListener('click', function() {
-            switchLanguage('indo');
+
+        // Fungsi untuk toggle masterplan
+        function toggleMasterplan() {
+            const content = document.getElementById('masterplanContent');
+            const button = document.getElementById('masterplanBtn');
+            const isHidden = content.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Tampilkan
+                content.classList.remove('hidden');
+                document.getElementById('masterplanDetails').innerHTML = translations[currentLang].masterplanDetails;
+                document.getElementById('masterplanText').textContent = translations[currentLang].masterplanHide;
+                button.classList.remove('from-yellow-500', 'to-orange-500');
+                button.classList.add('from-red-500', 'to-pink-500');
+            } else {
+                // Sembunyikan
+                content.classList.add('hidden');
+                document.getElementById('masterplanText').textContent = translations[currentLang].masterplanText;
+                button.classList.remove('from-red-500', 'to-pink-500');
+                button.classList.add('from-yellow-500', 'to-orange-500');
+            }
+        }
+
+        // Fungsi untuk menampilkan gallery
+        function loadGallery() {
+            const galleryContainer = document.getElementById('galleryContainer');
+            galleryContainer.innerHTML = '';
+            
+            galleryImages.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item cursor-pointer';
+                galleryItem.onclick = () => openModal(index);
+                
+                galleryItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.caption}" class="gallery-img" 
+                         onerror="this.src='https://placehold.co/300x200/4F46E5/FFFFFF?text=Gambar+Yayasan'">
+                    <div class="gallery-caption">${image.caption}</div>
+                `;
+                
+                galleryContainer.appendChild(galleryItem);
+            });
+        }
+
+        // Fungsi untuk membuka modal gambar
+        function openModal(index) {
+            currentImageIndex = index;
+            const image = galleryImages[index];
+            
+            document.getElementById('modalImage').src = image.src;
+            document.getElementById('modalImage').alt = image.caption;
+            document.getElementById('modalCaption').textContent = image.caption;
+            
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('modal-open');
+            
+            // Mencegah scroll body
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fungsi untuk menyalin nomor rekening
+        function copyAccountNumber() {
+            const accountNumber = '6254 0103 4128 532';
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                // Tampilkan pesan sukses
+                showNotification('Nomor rekening berhasil disalin!', 'success');
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+                showNotification('Gagal menyalin. Silakan coba manual.', 'error');
+            });
+        }
+
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message, type) {
+            // Hapus notifikasi sebelumnya
+            const oldNotification = document.querySelector('.notification');
+            if (oldNotification) {
+                oldNotification.remove();
+            }
+            
+            // Buat notifikasi baru
+            const notification = document.createElement('div');
+            notification.className = `notification fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white font-bold z-50 ${
+                type === 'success' ? 'bg-emerald-500' : 'bg-red-500'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Hapus setelah 3 detik
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup tombol bahasa
+            document.getElementById('btnIndo').addEventListener('click', () => switchLanguage('id'));
+            document.getElementById('btnEng').addEventListener('click', () => switchLanguage('en'));
+            
+            // Setup tombol masterplan
+            document.getElementById('masterplanBtn').addEventListener('click', toggleMasterplan);
+            
+            // Setup tombol copy rekening
+            document.getElementById('copyAccountBtn').addEventListener('click', copyAccountNumber);
+            document.getElementById('copyAccountBtn2').addEventListener('click', copyAccountNumber);
+            
+            // Setup modal
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // Tutup modal dengan ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+            
+            // Load gallery
+            loadGallery();
+            
+            // Set bahasa default
+            switchLanguage('id');
         });
-        
-        document.getElementById('btn-inggris').addEventListener('click', function() {
-            switchLanguage('inggris');
-        });
+
+        // Fallback untuk browser lama
+        if (!document.addEventListener) {
+            window.onload = function() {
+                loadGallery();
+                switchLanguage('id');
+            };
+        }
     </script>
 </body>
 </html>
