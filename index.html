@@ -3,213 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Hidayatul Ummah Kediri - Masterplan 3 Tahap</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Yayasan Hidayatul Ummah Kediri</title>
     <style>
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             margin-top: 20px;
         }
         
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .gallery-caption {
-            padding: 10px;
-            background: white;
+        header {
             text-align: center;
-            font-size: 14px;
-            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #2c5aa0;
         }
         
-        .progress-bar {
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
-            transition: width 0.5s ease;
-        }
-        
-        .modal-open {
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .masterplan-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid;
-        }
-        
-        .masterplan-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .phase-1 { border-left-color: #ef4444; }
-        .phase-2 { border-left-color: #3b82f6; }
-        .phase-3 { border-left-color: #10b981; }
-        
-        .cost-badge {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
+        .foundation-name {
+            color: #2c5aa0;
+            font-size: 28px;
+            margin-bottom: 10px;
             font-weight: bold;
-            padding: 5px 15px;
-            border-radius: 20px;
+        }
+        
+        .tagline {
+            color: #4a6fa5;
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .registration-no {
+            background-color: #e9f0fa;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 16px;
             display: inline-block;
-            margin: 5px 0;
+            margin-top: 10px;
+            border-left: 4px solid #2c5aa0;
+        }
+        
+        section {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h3 {
+            color: #4a6fa5;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .founder-section {
+            background-color: #f9fbfe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid #e1e8f5;
+        }
+        
+        .founder-title {
+            color: #2c5aa0;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .founder-name {
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .foundation-name {
+                font-size: 24px;
+            }
+            
+            .tagline {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen p-4">
-
-    <div class="max-w-6xl mx-auto">
-        <!-- Container Utama -->
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden my-8">
-            
-            <!-- Header dengan Logo -->
-            <div class="bg-gradient-to-r from-emerald-700 to-emerald-800 text-white p-8 text-center relative">
-                <!-- Tombol Bahasa -->
-                <div class="absolute top-4 right-4 flex space-x-2">
-                    <button id="btnIndo" class="px-4 py-2 bg-emerald-900 text-white rounded-lg font-medium shadow hover:bg-emerald-950 transition flex items-center">
-                        <i class="fas fa-flag mr-2"></i>INDONESIA
-                    </button>
-                    <button id="btnEng" class="px-4 py-2 bg-emerald-600 text-white rounded-lg font-medium shadow hover:bg-emerald-700 transition flex items-center">
-                        <i class="fas fa-flag-usa mr-2"></i>ENGLISH
-                    </button>
-                </div>
-                
-                <!-- Logo & Judul -->
-                <div class="flex flex-col items-center">
-                    <img src="logo.yayasan.jpg" alt="Logo Yayasan" class="w-28 h-28 rounded-full border-4 border-white shadow-lg mb-4">
-                    <h1 id="title" class="text-4xl font-bold mb-2">Yayasan Hidayatul Ummah Kediri</h1>
-                    <p id="subtitle" class="text-emerald-100 text-xl italic">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
-                    <div class="mt-6 bg-emerald-900/80 inline-block px-6 py-3 rounded-xl backdrop-blur-sm">
-                        <p class="font-mono text-sm tracking-wider">NO REGISTRASI: AHU-0003083.AH.01.04.Tahun 2023</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigasi -->
-            <div class="bg-emerald-50 p-4">
-                <div class="flex flex-wrap justify-center gap-2">
-                    <a href="#about" class="px-4 py-2 bg-white text-emerald-700 rounded-lg hover:bg-emerald-100 transition font-medium">
-                        <i class="fas fa-info-circle mr-2"></i>Tentang
-                    </a>
-                    <a href="#masterplan" class="px-4 py-2 bg-white text-emerald-700 rounded-lg hover:bg-emerald-100 transition font-medium">
-                        <i class="fas fa-project-diagram mr-2"></i>Masterplan
-                    </a>
-                    <a href="#gallery" class="px-4 py-2 bg-white text-emerald-700 rounded-lg hover:bg-emerald-100 transition font-medium">
-                        <i class="fas fa-images mr-2"></i>Galeri
-                    </a>
-                    <a href="#donation" class="px-4 py-2 bg-white text-emerald-700 rounded-lg hover:bg-emerald-100 transition font-medium">
-                        <i class="fas fa-donate mr-2"></i>Donasi
-                    </a>
-                </div>
-            </div>
-
-            <!-- Konten Utama -->
-            <div class="p-8">
-                <!-- Tentang Yayasan -->
-                <section id="about" class="mb-12 scroll-mt-20">
-                    <h2 id="aboutTitle" class="text-3xl font-bold text-emerald-800 mb-6 pb-3 border-b-2 border-emerald-200">Tentang Yayasan</h2>
-                    <div class="bg-gradient-to-r from-emerald-50 to-blue-50 p-8 rounded-2xl shadow-lg">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 class="text-xl font-bold text-emerald-700 mb-4">Visi & Misi</h3>
-                                <p id="aboutText1" class="mb-4 text-gray-700 leading-relaxed">
-                                    Yayasan Hidayatul Ummah Kediri adalah lembaga resmi terdaftar di Indonesia di bawah kepemimpinan KH. Moh Siri. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.
-                                </p>
-                                <p id="aboutText2" class="mb-4 text-gray-700 leading-relaxed">
-                                    Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-emerald-700 mb-4">Kegiatan Utama</h3>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-mosque text-emerald-600 mt-1 mr-3"></i>
-                                        <span class="text-gray-700">Pendidikan Agama Islam untuk anak-anak dan remaja</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-hands-helping text-emerald-600 mt-1 mr-3"></i>
-                                        <span class="text-gray-700">Program sosial bagi masyarakat kurang mampu</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-home text-emerald-600 mt-1 mr-3"></i>
-                                        <span class="text-gray-700">Pengembangan Panti Asuhan & Pesantren</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-users text-emerald-600 mt-1 mr-3"></i>
-                                        <span class="text-gray-700">Kegiatan keagamaan dan pengajian rutin</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-8 p-6 bg-white rounded-xl shadow-inner">
-                            <p id="aboutText3" class="text-gray-700 text-center text-lg italic">
-                                "Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu."
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Masterplan 3 Tahap -->
-                <section id="masterplan" class="mb-12 scroll-mt-20">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 id="masterplanTitle" class="text-3xl font-bold text-emerald-800 pb-3">Masterplan 3 Tahap Pembangunan</h2>
-                        <button id="copyProposalBtn" class="px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-xl transition-all shadow-lg flex items-center gap-2">
-                            <i class="far fa-copy"></i>
-                            <span id="copyBtnText">Salin Proposal</span>
-                        </button>
-                    </div>
-
-                    <!-- Pesan Sukses -->
-                    <div id="successMsg" class="mb-6 p-4 bg-emerald-100 border border-emerald-300 rounded-xl text-emerald-800 hidden">
-                        <i class="fas fa-check-circle mr-2"></i>
-                        <span id="successText">Proposal berhasil disalin! Silakan paste di WhatsApp atau media lainnya.</span>
-                    </div>
-
-                    <!-- Total Biaya -->
-                    <div class="mb-8 p-6 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl shadow-xl text-center">
-                        <h3 class="text-2xl font-bold text-white mb-2">TOTAL ESTIMASI PEMBANGUNAN</h3>
-                        <p class="text-4xl font-bold text-white">Rp 3.500.000.000</p>
-                        <p class="text-yellow-100 mt-2">(Tiga Miliar Lima Ratus Juta Rupiah)</p>
-                        <div class="mt-4 flex justify-center">
-                            <div class="bg-white/30 px-4 py-2 rounded-lg">
-                                <p class="text-white text-sm">Mari Menabung Jariyah untuk Anak Yatim</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Kartu Masterplan -->
-                    <div class="grid grid-cols-1 md
+<body>
+    <div class="container">
+        <header>
+            <h1 class="foundation-name">Yayasan Hidayatul Ummah Kediri</h1>
+            <p class="tagline">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
+            <div class="registration-no">NO REGISTRASI: AHL-0003083.AH.01.04.Tahun 2023</div>
+        </header>
+        
+        <section id="about">
+            <h2>Tentang Yayasan</h2>
+            <p>Yayasan Hidayatul Ummah Kediri adalah lembaga ribaka resmi terdaftar di Indonesia di bawah kepemimpinan KH. Moh Siri. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.</p>
+            <p>Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.</p>
+            <p>Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu.</p>
+        </section>
+        
+        <section id="founder" class="founder-section">
+            <h3 class="founder-title">Penerimaan</h3>
+            <p class="founder-name">KH. Moh Siri</p>
+            <p>Pendiri Yayasan</p>
+        </section>
+        
+        <footer>
+            <p>© 2023 Yayasan Hidayatul Ummah Kediri. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+</body>
+</html>
