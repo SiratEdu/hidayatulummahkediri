@@ -5,109 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yayasan Hidayatul Ummah Kediri</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
         
         /* HEADER */
-        header {
-            background: linear-gradient(135deg, #1a5f7a 0%, #2c3e50 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+        .header { background: #1a5f7a; color: white; padding: 20px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 5px; }
+        .header .tagline { font-size: 16px; margin-bottom: 10px; }
+        .reg-number { background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 15px; font-size: 14px; }
         
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+        /* NAV */
+        .nav { background: #2c3e50; padding: 10px; }
+        .nav ul { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 15px; }
+        .nav a { color: white; text-decoration: none; padding: 8px 15px; border-radius: 5px; }
+        .nav a:hover { background: #1a5f7a; }
         
-        .logo-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            color: #fff;
-        }
+        /* HERO */
+        .hero { background: #2c3e50; color: white; padding: 50px 20px; text-align: center; }
+        .hero h2 { font-size: 32px; margin-bottom: 20px; }
+        .hero p { max-width: 800px; margin: 0 auto 30px; font-size: 18px; }
+        .btn { display: inline-block; background: #FFD700; color: #000; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .btn:hover { background: #FFC107; }
         
-        .logo-section .tagline {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
+        /* SECTIONS */
+        .section { background: white; padding: 40px 20px; margin: 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .section h2 { color: #1a5f7a; margin-bottom: 20px; text-align: center; font-size: 24px; border-bottom: 3px solid #FFD700; padding-bottom: 10px; }
         
-        .registration {
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
+        /* DONASI */
+        .donasi-box { background: #f0f7ff; padding: 25px; border-radius: 10px; border-left: 5px solid #1a5f7a; max-width: 500px; margin: 0 auto; }
+        .donasi-box p { margin: 10px 0; }
+        .nomor-rek { font-size: 20px; font-weight: bold; color: #2c3e50; letter-spacing: 1px; }
+        .btn-copy { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        .btn-copy:hover { background: #45a049; }
         
-        /* NAVIGATION */
-        nav {
-            background-color: #2c3e50;
-            padding: 12px 0;
-        }
+        /* PETA */
+        .peta-container { margin: 20px auto; max-width: 800px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        iframe { width: 100%; height: 350px; border: none; }
         
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+        /* KONTAK */
+        .kontak-item { background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0; text-align: center; }
+        .btn-email { background: #1a5f7a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; cursor: pointer; }
+        .btn-email:hover { background: #144a60; }
         
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
+        /* FOOTER */
+        footer { background: #2c3e50; color: white; padding: 30px 20px; margin-top: 40px; text-align: center; }
         
-        .nav-menu a:hover {
-            background-color: #1a5f7a;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav ul { flex-direction: column; align-items: center; }
+            .hero h2 { font-size: 24px; }
+            .section { margin: 10px; padding: 30px 15px; }
         }
-        
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(26, 95, 122, 0.9)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .hero p {
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <h1>HIDAYATUL UMMAH</h1>
+        <p class="tagline">Yayasan Hidayatul Ummah Kediri</p>
+        <p class="tagline">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
+        <div class="reg-number">NO REGISTRASI: AHU-0003083.AH.01.04.Tahun 2023</div>
+    </header>
+
+    <!-- NAVIGASI -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#masterplan">Masterplan</a></li>
+            <li><a href="#donasi">Donasi</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <h2>Selamat Datang di Yayasan Hidayatul Ummah Kediri</h2>
+        <p>Bersama membangun ummat yang beriman, berilmu, dan berakhlak mulia melalui pendidikan, sosial, dan dakwah.</p>
+        <a href="#masterplan" class="btn"><i class="fas fa-download"></i> Masterplan Yayasan</a>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="section" id="about">
+        <h2>Tentang Yayasan</h2>
+        <p>Yayasan Hidayatul Ummah Kediri adalah lembaga sosial keagamaan yang berkomitmen untuk menumbuhkan iman dan memberdayakan ummat melalui berbagai program pendidikan, dakwah, dan kegiatan sosial.</p>
+        <p style="margin-top: 15px;">Didirikan dengan semangat untuk berkontribusi dalam pembangunan masyarakat yang berakhlak mulia, yayasan kami aktif dalam menyelenggarakan berbagai kegiatan keagamaan, pendidikan anak-anak, bantuan sosial, dan pemberdayaan ekonomi ummat.</p>
+    </section>
+
+    <!-- MASTERPLAN -->
+    <section class="section" id="masterplan">
+        <h2>Masterplan</h2>
+        <p>Masterplan pengembangan Yayasan Hidayatul Ummah Kediri mencakup rencana jangka panjang untuk pembangunan sarana pendidikan, dakwah, dan sosial.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="masterplan.pdf" target="_blank" class="btn">
+                <i class="fas fa-file-pdf"></i> Download Masterplan (PDF)
+            </a>
+        </div>
+    </section>
+
+    <!-- DONASI -->
+    <section class="section" id="donasi">
+        <h2>Dukungan & Donasi</h2>
+        <div class="donasi-box">
+            <h3 style="color: #1a5f7a; text-align: center;">Bank BRI</h3>
+            <p><strong>Nomor Rekening</strong></p>
+            <p class="nomor-rek" id="nomorRek">6254 0103 4128 532</p>
+            <p><strong>Atas Nama</strong></p>
+            <p><strong>MOH SAEFULLOH</strong></p>
+            <button onclick="salinRekening()" class="btn-copy">
+                <i class="fas fa-copy"></i> Salin Nomor Rekening
+            </button>
+            <p style="font-size: 14px; color: #666; margin-top: 10px;">Klik tombol di atas untuk menyalin</p>
+        </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section class="section" id="lokasi">
+        <h2>Lokasi Yayasan</h2>
+        <p style="text-align: center; margin-bottom: 20px;">
+            <strong>Jl. Kilisuci, Desa Sendang, Kec. Banyakan, Kab. Kediri, Jawa Timur</strong>
+        </p>
+        <div class="peta-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.123456!2d        .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
