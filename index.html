@@ -34,6 +34,15 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        
+        /* Logo styling */
+        .logo-container {
+            background: white;
+            padding: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -50,25 +59,27 @@
         </div>
     </div>
 
-    <!-- Header - LOGO SAJA di tengah -->
-    <header class="relative overflow-hidden bg-gradient-to-br from-[#1a5f7a] via-[#2a7c8d] to-[#2d936c] text-white py-16">
+    <!-- Header - LOGO ASLI di tengah -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-[#1a5f7a] via-[#2a7c8d] to-[#2d936c] text-white py-12 md:py-16">
         <div class="islamic-pattern absolute inset-0"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
-            <!-- Hanya logo di tengah -->
-            <img src="logo yayasan.jpg" alt="Logo Yayasan" 
-                 class="w-48 h-48 md:w-56 md:h-56 rounded-full border-8 border-white shadow-2xl mx-auto mb-8">
+            <!-- Logo Asli dengan frame putih -->
+            <div class="logo-container mb-8">
+                <img src="logo yayasan.jpg" alt="Logo Yayasan Hidayatul Ummah Kediri" 
+                     class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover">
+            </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Yayasan Hidayatul Ummah Kediri</h1>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Yayasan Hidayatul Ummah Kediri</h1>
             
             <div class="lang-content active" id="tagline-id">
-                <p class="text-xl md:text-2xl font-light mb-6">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
+                <p class="text-lg md:text-xl lg:text-2xl font-light mb-6">"Menumbuhkan Iman, Memberdayakan Ummat"</p>
             </div>
             <div class="lang-content" id="tagline-en">
-                <p class="text-xl md:text-2xl font-light mb-6">"Nurturing Faith, Empowering the Ummah"</p>
+                <p class="text-lg md:text-xl lg:text-2xl font-light mb-6">"Nurturing Faith, Empowering the Ummah"</p>
             </div>
             
             <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 inline-block">
-                <p class="font-mono text-sm">
+                <p class="font-mono text-sm md:text-base">
                     <span class="font-bold">NO REGISTRASI:</span> AHU-0003083.AH.01.04.Tahun 2023
                 </p>
             </div>
@@ -94,7 +105,8 @@
                     </div>
                 </div>
                 
-                <a href="masterplan.html" class="bg-gradient-to-r from-[#d4af37] to-[#f7c548] text-white px-6 py-2 rounded-full font-bold hover:shadow-lg transition-shadow">
+                <!-- TOMBOL MASTERPLAN YANG BISA DIKLIK -->
+                <a href="masterplan.html" class="bg-gradient-to-r from-[#d4af37] to-[#f7c548] hover:from-[#f7c548] hover:to-[#d4af37] text-white px-6 py-2 rounded-full font-bold hover:shadow-lg transition-all duration-300">
                     <span data-id="Masterplan" data-en="Masterplan">Masterplan</span> <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -108,6 +120,382 @@
         <section id="about" class="mb-20">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Tentang Yayasan" data-en="About the Foundation">Tentang Yayasan</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="lang-content active" id="about-text-id">
+                        <p class="text-lg mb-6">
+                            <strong>Yayasan Hidayatul Ummah Kediri</strong> adalah lembaga nirlaba resmi terdaftar di Indonesia di bawah kepemimpinan <strong>KH. Moh Siri</strong>. Kami menyediakan layanan pendidikan Islam dan kesejahteraan sosial untuk masyarakat dengan integritas profesional dan transparansi.
+                        </p>
+                        <p class="mb-6">
+                            Visi kami adalah menciptakan generasi Muslim yang beriman, berilmu, dan berakhlak mulia, serta berkontribusi positif bagi masyarakat sekitar.
+                        </p>
+                        <p>
+                            Yayasan kami aktif dalam berbagai kegiatan keagamaan, pendidikan anak, dan program sosial untuk membantu masyarakat kurang mampu.
+                        </p>
+                    </div>
+                    <div class="lang-content" id="about-text-en">
+                        <p class="text-lg mb-6">
+                            <strong>Hidayatul Ummah Kediri Foundation</strong> is an officially registered non-profit organization in Indonesia led by <strong>KH. Moh Siri</strong>. We provide Islamic education and social welfare services to the community with professional integrity and transparency.
+                        </p>
+                        <p class="mb-6">
+                            Our vision is to create a generation of Muslims who are faithful, knowledgeable, have good morals, and contribute positively to the surrounding community.
+                        </p>
+                        <p>
+                            Our foundation is active in various religious activities, children's education, and social programs to help underprivileged communities.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Foto SK Menkumham yang JELAS -->
+                    <img src="IMG-20230222-WA0004.jpg" alt="SK Menkumham Yayasan" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                    <img src="lahan.jpg" alt="Lahan Yayasan" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Pendiri Yayasan" data-en="Foundation Founder">Pendiri Yayasan</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="max-w-md mx-auto bg-white rounded-3xl shadow-xl p-8 text-center hover-lift">
+                <!-- FOTO PENDUKU YANG BARU -->
+                <img src="IMG-20210912-WA0032.jpg" alt="KH. Moh Siri" 
+                     class="w-48 h-48 rounded-full border-6 border-[#d4af37] object-cover mx-auto mb-6">
+                <h3 class="text-2xl font-bold text-[#1a5f7a]">KH. Moh Siri</h3>
+                <p class="text-[#d4af37] font-semibold mb-4">Founder & Chairman</p>
+                <p class="text-gray-600">
+                    <span class="lang-content active">Pendiri dan pengasuh Yayasan Hidayatul Ummah Kediri yang berdedikasi untuk pengembangan pendidikan Islam dan pemberdayaan masyarakat.</span>
+                    <span class="lang-content">Founder and caretaker of Hidayatul Ummah Kediri Foundation, dedicated to Islamic education development and community empowerment.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Structure Section - SATU FOTO SAJA -->
+        <section id="structure" class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Struktur Organisasi" data-en="Organizational Structure">Struktur Organisasi</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+                <p class="text-gray-600 mt-2" data-id="Masa Khidmah 2019 - 2029" data-en="Service Period 2019 - 2029">Masa Khidmah 2019 - 2029</p>
+            </div>
+            
+            <!-- FOTO STRUKTUR ORGANISASI SATU KOLOM -->
+            <div class="bg-white rounded-3xl shadow-xl p-6 max-w-4xl mx-auto">
+                <div class="text-center mb-6">
+                    <p class="text-gray-600 mb-2" data-id="Struktur Kepengurusan Resmi Yayasan" data-en="Official Organizational Structure of Foundation">Struktur Kepengurusan Resmi Yayasan</p>
+                </div>
+                <img src="IMG_20260128_111830.JPG" alt="Struktur Organisasi Yayasan" 
+                     class="w-full h-auto rounded-2xl shadow-lg">
+                <div class="text-center mt-6 text-sm text-gray-500">
+                    <p data-id="Dokumen resmi struktur kepengurusan yayasan" data-en="Official organizational structure document of foundation">
+                        Dokumen resmi struktur kepengurusan yayasan
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section id="activities" class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Kegiatan Yayasan" data-en="Foundation Activities">Kegiatan Yayasan</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+                    <img src="IMG-20260128-WA0056.jpg" alt="Kegiatan Anak" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2" data-id="Pendidikan Anak" data-en="Children Education">Pendidikan Anak</h4>
+                        <p class="text-gray-600 text-sm">
+                            <span class="lang-content active">Program pembelajaran Al-Qur'an dan pendidikan Islam dasar untuk anak-anak.</span>
+                            <span class="lang-content">Qur'an learning program and basic Islamic education for children.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+                    <img src="IMG-20260115-WA0006.jpg" alt="Kegiatan Sosial" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2" data-id="Kegiatan Sosial" data-en="Social Activities">Kegiatan Sosial</h4>
+                        <p class="text-gray-600 text-sm">
+                            <span class="lang-content active">Bantuan sosial dan pemberdayaan masyarakat kurang mampu.</span>
+                            <span class="lang-content">Social assistance and empowerment for underprivileged communities.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+                    <img src="IMG-20251231-WA0002.jpg" alt="Kegiatan Keagamaan" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2" data-id="Kegiatan Keagamaan" data-en="Religious Activities">Kegiatan Keagamaan</h4>
+                        <p class="text-gray-600 text-sm">
+                            <span class="lang-content active">Pengajian rutin, kajian kitab, dan kegiatan ibadah bersama.</span>
+                            <span class="lang-content">Regular religious studies, book discussions, and collective worship activities.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donation" class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Dukungan & Donasi" data-en="Support & Donation">Dukungan & Donasi</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- BRI -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-university text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Bank BRI</h3>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-2xl mb-6">
+                        <p class="text-sm text-gray-500 mb-2" data-id="Nomor Rekening" data-en="Account Number">Nomor Rekening</p>
+                        <p class="text-2xl font-bold text-green-700 font-mono tracking-widest">6254 0103 4128 532</p>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="text-sm text-gray-500 mb-1" data-id="Atas Nama" data-en="Account Name">Atas Nama</p>
+                            <p class="font-bold text-gray-800">MOH SAEFULLOH</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="copyToClipboard('6254 0103 4128 532')" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold transition-colors">
+                        <i class="fas fa-copy mr-2"></i> 
+                        <span data-id="Salin Nomor Rekening" data-en="Copy Account Number">Salin Nomor Rekening</span>
+                    </button>
+                </div>
+                
+                <!-- PayPal -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-paypal text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">PayPal</h3>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-2xl mb-6">
+                        <p class="text-sm text-gray-500 mb-2" data-id="Email PayPal" data-en="PayPal Email">Email PayPal</p>
+                        <p class="text-lg font-bold text-blue-700">yayasanhidayatulummahkediri@gmail.com</p>
+                    </div>
+                    
+                    <a href="https://paypal.me/SiratEdu" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-center transition-colors">
+                        <i class="fab fa-paypal mr-2"></i> 
+                        <span data-id="Donasi via PayPal" data-en="Donate via PayPal">Donasi via PayPal</span>
+                    </a>
+                </div>
+                
+                <!-- DANA -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-[#118eea] rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold text-xl">DANA</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">DANA</h3>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <img src="IMG-20260127-WA0003.jpg" alt="QR Code DANA" class="w-48 h-48 rounded-2xl border-4 border-gray-100 shadow-md mb-6">
+                        
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 mb-1" data-id="Scan QR Code" data-en="Scan QR Code">Scan QR Code</p>
+                            <p class="font-bold text-gray-800">Moh. Saefulloh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Kontak Kami" data-en="Contact Us">Kontak Kami</h2>
+                <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover-lift">
+                    <div class="w-16 h-16 bg-[#1a5f7a] text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Email</h4>
+                    <p class="text-gray-700 mb-4">yayasanhidayatulummahkediri@gmail.com</p>
+                    <a href="mailto:yayasanhidayatulummahkediri@gmail.com" class="inline-block bg-[#1a5f7a] text-white px-4 py-2 rounded-lg hover:bg-[#2a7c8d] transition-colors">
+                        <i class="fas fa-paper-plane mr-2"></i> Kirim Email
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover-lift">
+                    <div class="w-16 h-16 bg-[#2d936c] text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2" data-id="Lokasi" data-en="Location">Lokasi</h4>
+                    <p class="text-gray-700 mb-4">Kediri, Jawa Timur, Indonesia</p>
+                    <a href="https://maps.google.com/?q=Kediri+East+Java+Indonesia" target="_blank" class="inline-block bg-[#2d936c] text-white px-4 py-2 rounded-lg hover:bg-[#3aa97c] transition-colors">
+                        <i class="fas fa-map mr-2"></i> Lihat Peta
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-lg text-center hover-lift">
+                    <div class="w-16 h-16 bg-[#d4af37] text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2" data-id="WhatsApp" data-en="WhatsApp">WhatsApp</h4>
+                    <p class="text-gray-700 mb-4">+62 856 0489 7118</p>
+                    <a href="https://wa.me/6285604897118" target="_blank" class="inline-block bg-[#25D366] text-white px-4 py-2 rounded-lg hover:bg-[#20b858] transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i> Chat WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a5f7a] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <img src="logo yayasan.jpg" alt="Logo" class="w-24 h-24 rounded-full border-4 border-white/20 mb-4 object-cover">
+                    <h3 class="text-2xl font-bold">Yayasan Hidayatul Ummah Kediri</h3>
+                    <p class="text-white/70 mt-2">
+                        <span class="lang-content active">Terdaftar resmi di Kemenkumham RI</span>
+                        <span class="lang-content">Officially registered at Indonesian Ministry of Law</span>
+                    </p>
+                </div>
+                
+                <div class="flex space-x-6 text-2xl">
+                    <a href="https://www.youtube.com" target="_blank" class="hover:text-[#d4af37] transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="hover:text-[#d4af37] transition-colors">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/6285604897118" target="_blank" class="hover:text-[#d4af37] transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="hover:text-[#d4af37] transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+                <p>© 2023-2026 Yayasan Hidayatul Ummah Kediri. 
+                   <span data-id="Semua hak dilindungi" data-en="All rights reserved">Semua hak dilindungi</span>.</p>
+                <p class="mt-2">
+                    <span data-id="Dibuat dengan" data-en="Made with">Dibuat dengan</span> ❤️ 
+                    <span data-id="untuk kemajuan umat" data-en="for the advancement of the ummah">untuk kemajuan umat</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.add('bg-transparent', 'border', 'border-white/30');
+                    btn.classList.remove('bg-white/20');
+                });
+                this.classList.add('active');
+                this.classList.remove('bg-transparent', 'border', 'border-white/30');
+                this.classList.add('bg-white/20');
+                
+                // Get selected language
+                const lang = this.getAttribute('data-lang');
+                
+                // Show/hide language content
+                document.querySelectorAll('.lang-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                document.querySelectorAll(`[id$="-${lang}"]`).forEach(content => {
+                    content.classList.add('active');
+                });
+                
+                // Update text elements with data attributes
+                document.querySelectorAll('[data-id]').forEach(element => {
+                    if (lang === 'id') {
+                        element.textContent = element.getAttribute('data-id');
+                    } else if (lang === 'en') {
+                        element.textContent = element.getAttribute('data-en');
+                    }
+                });
+                
+                // Update navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (lang === 'id') {
+                        link.textContent = link.getAttribute('data-id');
+                    } else if (lang === 'en') {
+                        link.textContent = link.getAttribute('data-en');
+                    }
+                });
+            });
+        });
+
+        // Copy to Clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                const successText = currentLang === 'id' ? 'Tersalin!' : 'Copied!';
+                
+                button.innerHTML = `<i class="fas fa-check"></i> ${successText}`;
+                button.style.background = '#2d936c';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '';
+                }, 2000);
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#' || this.getAttribute('href').includes('masterplan')) return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set default language to Indonesian
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelectorAll('[id$="-id"]').forEach(content => {
+                content.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>                <h2 class="text-3xl font-bold text-[#1a5f7a] mb-4" data-id="Tentang Yayasan" data-en="About the Foundation">Tentang Yayasan</h2>
                 <div class="h-1 w-24 bg-[#d4af37] mx-auto"></div>
             </div>
             
